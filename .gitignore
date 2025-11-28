@@ -1,4 +1,8 @@
 bin/
 obj/
-*.cbp
 .objs/
+.depend
+*.cbp
+*.layout
+*.depend
+*.exe
