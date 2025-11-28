@@ -1,6 +1,9 @@
 #ifndef DIVISI_H_INCLUDED
 #define DIVISI_H_INCLUDED
+#include <iostream>
 #include "Pegawai.h"
+
+using namespace std;
 
 typedef struct divisi infotypeDivisi;
 typedef struct elmListDivisi *adrDivisi;
@@ -14,6 +17,9 @@ struct elmListDivisi {
 
 struct divisi{
     string nama;
+    int idDivisi;
+    int jumlahPegawai;
+    string lokasiDivisi;
 };
 
 struct listDivisi{
