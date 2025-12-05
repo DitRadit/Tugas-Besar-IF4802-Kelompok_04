@@ -24,13 +24,13 @@ struct pegawai
 bool isEmptyPegawai(adrPegawai first);
 void createListPegawai(adrPegawai &first);
 adrPegawai createElmListPegawai(infotypePegawai x);
-void insertFirstPegawai(adrPegawai &first, adrPegawai p);
-void insertLastPegawai(adrPegawai &first, adrPegawai p);
-void insertAfterPegawai(adrPegawai &first, adrPegawai prec, adrPegawai p);
-void deleteFirstPegawai(adrPegawai &first, adrPegawai &p);
-void deleteLastPegawai(adrPegawai &first, adrPegawai &p);
-void deleteAfterPegawai(adrPegawai &first, adrPegawai &prec, adrPegawai &p);
-adrPegawai findElmPegawai(adrPegawai first, int idPegawai);
+void insertFirstPegawai(adrDivisi &D, adrPegawai p);
+void insertLastPegawai(adrDivisi &D, adrPegawai p);
+void insertAfterPegawai(adrDivisi &D, adrPegawai prec, adrPegawai p);
+void deleteFirstPegawai(adrDivisi &D, adrPegawai &p);
+void deleteLastPegawai(adrDivisi &D, adrPegawai &p);
+void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
+adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrPegawai first);
 
 #endif // PEGAWAI_H_INCLUDED
