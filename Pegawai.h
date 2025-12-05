@@ -30,7 +30,7 @@ void insertAfterPegawai(adrPegawai &first, adrPegawai prec, adrPegawai p);
 void deleteFirstPegawai(adrPegawai &first, adrPegawai &p);
 void deleteLastPegawai(adrPegawai &first, adrPegawai &p);
 void deleteAfterPegawai(adrPegawai &first, adrPegawai &prec, adrPegawai &p);
-adrPegawai findElmPegawai(adrPegawai first, adrPegawai p);
+adrPegawai findElmPegawai(adrPegawai first, int idPegawai);
 void printInfoPegawai(adrPegawai first);
 
 #endif // PEGAWAI_H_INCLUDED

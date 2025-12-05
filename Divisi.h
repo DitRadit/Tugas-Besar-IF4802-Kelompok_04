@@ -35,6 +35,7 @@ bool isEmptyDivisi(listDivisi L);
 adrDivisi createElmDivisi(infotypeDivisi x);
 void insertFirstDivisi(listDivisi &L, adrDivisi P);
 void insertLastDivisi(listDivisi &L, adrDivisi P);
+void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi P);
 void deleteFirstDivisi(listDivisi &L, adrDivisi &P);
 void deleteLastDivisi(listDivisi &L, adrDivisi &P);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
