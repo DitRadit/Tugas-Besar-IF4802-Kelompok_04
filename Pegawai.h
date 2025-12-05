@@ -31,6 +31,6 @@ void deleteFirstPegawai(adrDivisi &D, adrPegawai &p);
 void deleteLastPegawai(adrDivisi &D, adrPegawai &p);
 void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
-void printInfoPegawai(adrPegawai first);
+void printInfoPegawai(adrDivisi D);
 
 #endif // PEGAWAI_H_INCLUDED

@@ -38,9 +38,8 @@ void insertLastDivisi(listDivisi &L, adrDivisi P);
 void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi P);
 void deleteFirstDivisi(listDivisi &L, adrDivisi &P);
 void deleteLastDivisi(listDivisi &L, adrDivisi &P);
-void deleteAfterDivisi(listDivisi &L, adrDivisi &Prec, adrDivisi &P);
+void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &P);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
 void printInfoDivisi(listDivisi L);
-void printPegawaiByDivisi(adrDivisi D);
 
 #endif // DIVISI_H_INCLUDED
