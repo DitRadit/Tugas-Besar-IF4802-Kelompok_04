@@ -4,54 +4,51 @@
 
 using namespace std;
 
-void deleteFirstPegawai(adrPegawai &first, adrPegawai &p){
-    if(isEmptyPegawai(first)){
-        p = nullptr;
-    } else {
-        p = first;
-        first = p->next;
+void deleteFirstPegawai(adrDivisi &D, adrPegawai &p) {
+    if (!isEmptyPegawai(D->firstPegawai)) {
+        p = D->firstPegawai;
+        D->firstPegawai = p->next;
         p->next = nullptr;
+        D->infoD.jumlahPegawai--;
     }
 }
-void deleteLastPegawai(adrPegawai &first, adrPegawai &p){
-    adrPegawai q;
 
-    if(isEmptyPegawai(first)){
-        p = nullptr;
-    } else if(first->next == nullptr) {
-        p = first;
-        first = nullptr;
-    } else {
-        q = first;
-        while(q->next->next!= nullptr){
-            q = q->next;
+void deleteLastPegawai(adrDivisi &D, adrPegawai &p) {
+    if (!isEmptyPegawai(D->firstPegawai)) {
+        if (D->firstPegawai->next == nullptr) {
+            deleteFirstPegawai(D, p);
+        } else {
+            adrPegawai prev, cur;
+            prev = nullptr;
+            cur = D->firstPegawai;
+            while (cur->next != nullptr) {
+                prev = cur;
+                cur = cur->next;
+            }
+            p = cur;
+            prev->next = nullptr;
+            D->infoD.jumlahPegawai--;
         }
-        p = q->next;
-        q->next = nullptr;
     }
 }
-void deleteAfterPegawai(adrPegawai &first, adrPegawai prec, adrPegawai &p) {
-    if (first == nullptr) {
-        p = nullptr;
-    } else if (prec == nullptr || prec->next == nullptr) {
-        p = nullptr;
-    } else {
+
+void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p) {
+    if (prec != nullptr && prec->next != nullptr) {
         p = prec->next;
         prec->next = p->next;
         p->next = nullptr;
+        D->infoD.jumlahPegawai--;
     }
 }
 
-
-
-adrPegawai findElmPegawai(adrPegawai first, int idPegawai) {
-    adrPegawai p;
-    p = first;
-    while(p != nullptr){
-        if(p->infoP.idPegawai == idPegawai){
-            return p;
+adrPegawai findElmPegawai(adrDivisi D, int idPegawai) {
+    adrPegawai cur;
+    cur = D->firstPegawai;
+    while (cur != nullptr) {
+        if (cur->infoP.idPegawai == idPegawai) {
+            return cur;
         }
-        p = p->next;
+        cur = cur->next;
     }
     return nullptr;
 }
