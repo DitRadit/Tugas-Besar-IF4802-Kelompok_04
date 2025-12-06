@@ -4,6 +4,23 @@
 
 using namespace std;
 
+bool isEmptyPegawai(adrPegawai first){
+    return first == nullptr;
+}
+
+void createListPegawai(adrPegawai &first){
+    first = nullptr;
+}
+
+adrPegawai createElmListPegawai(infotypePegawai x){
+    adrPegawai p;
+
+    p = new elmListPegawai;
+    p->infoP = x;
+    p->next = nullptr;
+    return p;
+}
+
 void deleteFirstPegawai(adrDivisi &D, adrPegawai &p)
 {
     if (!isEmptyPegawai(D->firstPegawai))
@@ -63,4 +80,24 @@ adrPegawai findElmPegawai(adrDivisi D, int idPegawai)
         cur = cur->next;
     }
     return nullptr;
+}
+
+void printInfoPegawai(adrDivisi D){
+    adrPegawai p;
+
+    p = D->firstPegawai;
+
+    if(p == nullptr){
+        cout << "Daftar Pegawai: (kosong)" << endl;
+    } else {
+        cout << "Daftar Pegawai: " << endl;
+        while (p != nullptr){
+            cout << "    - " << p->infoP.nama
+             << " (ID: " << p->infoP.idPegawai
+             << ", Umur: " << p->infoP.umur
+             << ", Jabatan: " << p->infoP.jabatan << ")"
+             << endl;
+            p = p->next;
+        }
+    }
 }
