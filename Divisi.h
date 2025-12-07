@@ -49,7 +49,7 @@ struct elmListDivisi
     infotypeDivisi infoD;
     adrDivisi next;
     adrDivisi prev;
-    adrPegawai firstPegawai; // <-- sekarang sudah dikenal
+    adrPegawai firstPegawai; 
 };
 
 struct listDivisi
