@@ -1,43 +1,12 @@
 #ifndef DIVISI_H_INCLUDED
 #define DIVISI_H_INCLUDED
-#include <iostream>
 
+#include <iostream>
 using namespace std;
 
-// DIVISI - PARENT
-typedef struct divisi infotypeDivisi;
-typedef struct elmListDivisi *adrDivisi;
-struct elmListDivisi
-{
-    infotypeDivisi infoD;
-    adrDivisi next;
-    adrDivisi prev;
-    adrPegawai firstPegawai;
-};
-
-struct divisi
-{
-    string nama;
-    int idDivisi;
-    int jumlahPegawai;
-    string lokasiDivisi;
-};
-
-struct listDivisi
-{
-    adrDivisi first;
-    adrDivisi last;
-};
-
-// PEGAWAI - CHILD
-typedef struct pegawai infotypePegawai;
-typedef struct elmListPegawai *adrPegawai;
-
-struct elmListPegawai
-{
-    infotypePegawai infoP;
-    adrPegawai next;
-};
+// ===========================
+//  PEGAWAI (CHILD FIRST!)
+// ===========================
 
 struct pegawai
 {
@@ -47,7 +16,51 @@ struct pegawai
     string jabatan;
 };
 
-// DEKLARASI SUBPROGRAM DIVISI - PARENT
+typedef pegawai infotypePegawai;
+
+struct elmListPegawai;
+typedef elmListPegawai *adrPegawai;
+
+struct elmListPegawai
+{
+    infotypePegawai infoP;
+    adrPegawai next;
+};
+
+// ===========================
+//  DIVISI (PARENT SECOND!)
+// ===========================
+
+struct divisi
+{
+    string nama;
+    int idDivisi;
+    int jumlahPegawai;
+    string lokasiDivisi;
+};
+
+typedef divisi infotypeDivisi;
+
+struct elmListDivisi;
+typedef elmListDivisi *adrDivisi;
+
+struct elmListDivisi
+{
+    infotypeDivisi infoD;
+    adrDivisi next;
+    adrDivisi prev;
+    adrPegawai firstPegawai; // <-- sekarang sudah dikenal
+};
+
+struct listDivisi
+{
+    adrDivisi first;
+    adrDivisi last;
+};
+
+// ===========================
+//     PROTOTYPE DIVISI
+// ===========================
 void createListDivisi(listDivisi &L);
 bool isEmptyDivisi(listDivisi L);
 adrDivisi createElmDivisi(infotypeDivisi x);
@@ -60,7 +73,9 @@ void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &P);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
 void printInfoDivisi(listDivisi L);
 
-// DEKLARASI SUBPROGRAM PEGAWAI - CHILD
+// ===========================
+//     PROTOTYPE PEGAWAI
+// ===========================
 bool isEmptyPegawai(adrPegawai first);
 void createListPegawai(adrPegawai &first);
 adrPegawai createElmListPegawai(infotypePegawai x);
@@ -73,4 +88,4 @@ void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrDivisi D);
 
-#endif // DIVISI_H_INCLUDED
+#endif

@@ -3,26 +3,6 @@
 
 using namespace std;
 
-bool isEmptyPegawai(adrPegawai first)
-{
-    return first == nullptr;
-}
-
-void createListPegawai(adrPegawai &first)
-{
-    first = nullptr;
-}
-
-adrPegawai createElmListPegawai(infotypePegawai x)
-{
-    adrPegawai p;
-
-    p = new elmListPegawai;
-    p->infoP = x;
-    p->next = nullptr;
-    return p;
-}
-
 void deleteFirstPegawai(adrDivisi &D, adrPegawai &p)
 {
     if (!isEmptyPegawai(D->firstPegawai))
