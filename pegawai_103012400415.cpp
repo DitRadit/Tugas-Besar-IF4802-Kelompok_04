@@ -1,18 +1,20 @@
 #include <iostream>
-#include "Pegawai.h"
 #include "Divisi.h"
 
 using namespace std;
 
-bool isEmptyPegawai(adrPegawai first){
+bool isEmptyPegawai(adrPegawai first)
+{
     return first == nullptr;
 }
 
-void createListPegawai(adrPegawai &first){
+void createListPegawai(adrPegawai &first)
+{
     first = nullptr;
 }
 
-adrPegawai createElmListPegawai(infotypePegawai x){
+adrPegawai createElmListPegawai(infotypePegawai x)
+{
     adrPegawai p;
 
     p = new elmListPegawai;
@@ -82,21 +84,26 @@ adrPegawai findElmPegawai(adrDivisi D, int idPegawai)
     return nullptr;
 }
 
-void printInfoPegawai(adrDivisi D){
+void printInfoPegawai(adrDivisi D)
+{
     adrPegawai p;
 
     p = D->firstPegawai;
 
-    if(p == nullptr){
+    if (p == nullptr)
+    {
         cout << "Daftar Pegawai: (kosong)" << endl;
-    } else {
+    }
+    else
+    {
         cout << "Daftar Pegawai: " << endl;
-        while (p != nullptr){
+        while (p != nullptr)
+        {
             cout << "    - " << p->infoP.nama
-             << " (ID: " << p->infoP.idPegawai
-             << ", Umur: " << p->infoP.umur
-             << ", Jabatan: " << p->infoP.jabatan << ")"
-             << endl;
+                 << " (ID: " << p->infoP.idPegawai
+                 << ", Umur: " << p->infoP.umur
+                 << ", Jabatan: " << p->infoP.jabatan << ")"
+                 << endl;
             p = p->next;
         }
     }

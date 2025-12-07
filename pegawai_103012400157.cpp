@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Pegawai.h"
 #include "Divisi.h"
 
 using namespace std;
@@ -7,11 +6,6 @@ using namespace std;
 bool isEmptyPegawai(adrPegawai first)
 {
     return first == nullptr;
-}
-
-void createListPegawai(adrPegawai &first)
-{
-    first = nullptr;
 }
 
 adrPegawai createElmListPegawai(infotypePegawai x)
