@@ -3,6 +3,26 @@
 
 using namespace std;
 
+void createListDivisi(listDivisi &L){
+    L.first = nullptr;
+    L.last = nullptr;
+}
+
+bool isEmptyDivisi(listDivisi L){
+    return L.first == nullptr && L.last == nullptr;
+}
+
+adrDivisi createElmDivisi(infotypeDivisi x){
+    adrDivisi p;
+
+    p = new elmListPegawai;
+    p->infoD = x;
+    p->firstPegawai = nullptr;
+    p->next = nullptr;
+    p->prev = nullptr;
+    return p;
+}
+
 void insertFirstDivisi(listDivisi &L, adrDivisi D)
 {
     if (isEmptyDivisi(L))
