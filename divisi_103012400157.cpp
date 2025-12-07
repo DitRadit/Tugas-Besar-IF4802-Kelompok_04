@@ -3,60 +3,74 @@
 
 using namespace std;
 
-void deleteFirstDivisi(listDivisi &L, adrDivisi &P)
+void deleteFirstDivisi(listDivisi &L, adrDivisi &D)
 {
     if (isEmptyDivisi(L))
     {
-        P = nullptr;
-    }
-    else if (L.first == L.last)
-    {
-        L.first = nullptr;
-        L.last = nullptr;
+        D = nullptr;
     }
     else
     {
-        L.first = P->next;
-        L.first->prev = nullptr;
-        P->next = nullptr;
+        D = L.first;
+        deleteAllPegawai(D);
+        if (L.first == L.last)
+        {
+            L.first = nullptr;
+        }
+        else
+        {
+            L.first = D->next;
+            L.first->prev = nullptr;
+            D->next = nullptr;
+        }
     }
 }
 
-void deleteLastDivisi(listDivisi &L, adrDivisi &P)
+void deleteLastDivisi(listDivisi &L, adrDivisi &D)
 {
     if (isEmptyDivisi(L))
     {
-        P = nullptr;
-    }
-    else if (L.first == L.last)
-    {
-        L.first = nullptr;
-        L.last = nullptr;
+        D = nullptr;
     }
     else
     {
-        L.last = P->prev;
-        L.last->next = nullptr;
-        P->prev = nullptr;
+        D = L.last;
+        deleteAllPegawai(D);
+        if (L.first == L.last)
+        {
+            L.first = nullptr;
+            L.last = nullptr;
+        }
+        else
+        {
+            L.last = D->prev;
+            L.last->next = nullptr;
+            D->prev = nullptr;
+        }
     }
 }
 
-void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &P)
+void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &D)
 {
     if (prec != nullptr && prec->next != nullptr)
     {
-        P = prec->next;
-        prec->next = P->next;
-        if (P->next != nullptr)
+        D = prec->next;
+        deleteAllPegawai(D);
+        prec->next = D->next;
+        if (D->next != nullptr)
         {
-            P->next->prev = prec;
+            D->next->prev = prec;
         }
         else
         {
             L.last = prec;
         }
-        P->next = nullptr;
-        P->prev = nullptr;
+        D->next = nullptr;
+        D->prev = nullptr;
+    }
+    else
+    {
+        D = nullptr;
     }
 }
 

@@ -43,6 +43,20 @@ void insertLastPegawai(adrDivisi &D, adrPegawai p)
     }
 }
 
+void deleteAllPegawai(adrDivisi D)
+{
+    adrPegawai P;
+    P = D->firstPegawai;
+    while (P != nullptr)
+    {
+        adrPegawai temp = P;
+        P = P->next;
+        delete temp;
+    }
+    D->firstPegawai = nullptr;
+    D->infoD.jumlahPegawai = 0;
+}
+
 void insertAfterPegawai(adrDivisi &D, adrPegawai prec, adrPegawai p)
 {
     if (prec != nullptr)

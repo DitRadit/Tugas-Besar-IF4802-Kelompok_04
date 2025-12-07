@@ -3,37 +3,37 @@
 
 using namespace std;
 
-void insertFirstDivisi(listDivisi &L, adrDivisi P)
+void insertFirstDivisi(listDivisi &L, adrDivisi D)
 {
     if (isEmptyDivisi(L))
     {
-        L.first = P;
-        L.last = P;
+        L.first = D;
+        L.last = D;
     }
     else
     {
-        P->next = L.first;
-        L.first->prev = P;
-        L.first = P;
+        D->next = L.first;
+        L.first->prev = D;
+        L.first = D;
     }
 }
 
-void insertLastDivisi(listDivisi &L, adrDivisi P)
+void insertLastDivisi(listDivisi &L, adrDivisi D)
 {
     if (isEmptyDivisi(L))
     {
-        L.first = P;
-        L.last = P;
+        L.first = D;
+        L.last = D;
     }
     else
     {
-        P->prev = L.last;
-        L.last->next = P;
-        L.last = P;
+        D->prev = L.last;
+        L.last->next = D;
+        L.last = D;
     }
 }
 
-void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi P)
+void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi D)
 {
     if (prec == nullptr)
     {
@@ -42,13 +42,13 @@ void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi P)
 
     if (prec == L.last)
     {
-        insertLastDivisi(L, P);
+        insertLastDivisi(L, D);
     }
     else
     {
-        P->next = prec->next;
-        P->prev = prec;
-        prec->next->prev = P;
-        prec->next = P;
+        D->next = prec->next;
+        D->prev = prec;
+        prec->next->prev = D;
+        prec->next = D;
     }
 }

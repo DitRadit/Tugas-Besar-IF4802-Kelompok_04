@@ -64,12 +64,12 @@ struct listDivisi
 void createListDivisi(listDivisi &L);
 bool isEmptyDivisi(listDivisi L);
 adrDivisi createElmDivisi(infotypeDivisi x);
-void insertFirstDivisi(listDivisi &L, adrDivisi P);
-void insertLastDivisi(listDivisi &L, adrDivisi P);
-void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi P);
-void deleteFirstDivisi(listDivisi &L, adrDivisi &P);
-void deleteLastDivisi(listDivisi &L, adrDivisi &P);
-void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &P);
+void insertFirstDivisi(listDivisi &L, adrDivisi D);
+void insertLastDivisi(listDivisi &L, adrDivisi D);
+void insertAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi D);
+void deleteFirstDivisi(listDivisi &L, adrDivisi &D);
+void deleteLastDivisi(listDivisi &L, adrDivisi &D);
+void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &D);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
 void printInfoDivisi(listDivisi L);
 
@@ -77,7 +77,6 @@ void printInfoDivisi(listDivisi L);
 //     PROTOTYPE PEGAWAI
 // ===========================
 bool isEmptyPegawai(adrPegawai first);
-void createListPegawai(adrPegawai &first);
 adrPegawai createElmListPegawai(infotypePegawai x);
 void insertFirstPegawai(adrDivisi &D, adrPegawai p);
 void insertLastPegawai(adrDivisi &D, adrPegawai p);
@@ -85,6 +84,7 @@ void insertAfterPegawai(adrDivisi &D, adrPegawai prec, adrPegawai p);
 void deleteFirstPegawai(adrDivisi &D, adrPegawai &p);
 void deleteLastPegawai(adrDivisi &D, adrPegawai &p);
 void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
+void deleteAllPegawai(adrDivisi D);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrDivisi D);
 
