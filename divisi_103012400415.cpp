@@ -3,19 +3,22 @@
 
 using namespace std;
 
-void createListDivisi(listDivisi &L){
+void createListDivisi(listDivisi &L)
+{
     L.first = nullptr;
     L.last = nullptr;
 }
 
-bool isEmptyDivisi(listDivisi L){
+bool isEmptyDivisi(listDivisi L)
+{
     return L.first == nullptr && L.last == nullptr;
 }
 
-adrDivisi createElmDivisi(infotypeDivisi x){
+adrDivisi createElmDivisi(infotypeDivisi x)
+{
     adrDivisi p;
 
-    p = new elmListPegawai;
+    p = new elmListDivisi;
     p->infoD = x;
     p->firstPegawai = nullptr;
     p->next = nullptr;

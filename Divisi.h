@@ -49,7 +49,7 @@ struct elmListDivisi
     infotypeDivisi infoD;
     adrDivisi next;
     adrDivisi prev;
-    adrPegawai firstPegawai; 
+    adrPegawai firstPegawai;
 };
 
 struct listDivisi
@@ -87,5 +87,8 @@ void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
 void deleteAllPegawai(adrDivisi D);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrDivisi D);
+
+int mainAdmin();
+int mainUser();
 
 #endif

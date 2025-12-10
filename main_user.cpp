@@ -1,8 +1,6 @@
-#include <iostream>
+#include "Divisi.h"
 
-using namespace std;
-
-int main()
+int mainUser()
 {
     cout << "Hello world!" << endl;
     cout << "Ini main User" << endl;
