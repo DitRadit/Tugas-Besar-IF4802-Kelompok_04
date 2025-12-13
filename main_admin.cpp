@@ -51,9 +51,11 @@ int mainAdmin(listDivisi &L)
             cin >> pgw.umur;
             cout << "Jabatan    : ";
             cin >> pgw.jabatan;
+            cout << "Nilai      : ";
+            cin >> pgw.nilai;    
 
             q = createElmListPegawai(pgw);
-            insertLastPegawai(p, q);
+            insertLastPegawai(p, q); 
         }
 
         insertLastDivisi(L, p);
