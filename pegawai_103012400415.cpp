@@ -88,3 +88,72 @@ void printInfoPegawai(adrDivisi D)
         }
     }
 }
+
+float hitungRataUmurPegawai(listDivisi L) {
+    float rata = 0.0;
+    int count = 0;
+    adrPegawai P;
+
+    adrDivisi D = L.first;
+
+    while (D != nullptr) {
+        P = D->firstPegawai;
+
+        while (P != nullptr) {
+            count++;
+            rata = rata + (P->infoP.umur - rata) / count;
+
+            P = P->next;
+        }
+
+        D = D->next;
+    }
+
+    return rata; 
+}
+
+adrPegawai cariPegawaiTertua(listDivisi L) {
+    adrDivisi D;
+    adrPegawai tertua, P;
+    int maxUmur;
+
+    D = L.first;
+    tertua = nullptr;
+    maxUmur = -1;
+    while (D != nullptr) {
+        P = D->firstPegawai;
+
+        while (P != nullptr) {
+            if (P->infoP.umur > maxUmur) {
+                maxUmur = P->infoP.umur;
+                tertua = P;
+            }
+            P = P->next;
+        }
+
+        D = D->next;
+    }
+
+    return tertua;
+}
+
+int hitungTotalPegawai(listDivisi L) {
+    int total;
+    adrDivisi D;
+    adrPegawai P;
+    
+    D = L.first;
+    total = 0;
+    while (D != nullptr) {
+        P = D->firstPegawai;
+
+        while (P != nullptr) {
+            total++;
+            P = P->next;
+        }
+
+        D = D->next;
+    }
+
+    return total;
+}
