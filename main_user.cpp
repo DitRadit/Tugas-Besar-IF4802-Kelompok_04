@@ -3,6 +3,9 @@
 int mainUser(listDivisi &L)
 {
     adrDivisi d;
+    int totalPegawai;
+    float rataUmurPegawai;
+    adrPegawai tertua;
 
     cout << "\n===== MENU USER =====\n";
 
@@ -23,6 +26,22 @@ int mainUser(listDivisi &L)
 
         d = d->next;
     }
+
+    cout << endl;
+    
+    totalPegawai = hitungTotalPegawai(L);
+    cout << "Total Karyawan : " << totalPegawai << " orang" << endl << endl;
+
+    rataUmurPegawai = hitungRataUmurPegawai(L);
+    cout << "Rata Umur: " << rataUmurPegawai << endl << endl;
+
+    tertua = cariPegawaiTertua(L);
+    if(tertua){
+        cout << "Pegawai tertua: " << tertua->infoP.nama << " (" << tertua->infoP.umur <<" tahun)" << endl;
+    }
+    
+    
+
 
     return 0;
 }
