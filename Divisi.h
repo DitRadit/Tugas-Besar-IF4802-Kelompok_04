@@ -12,6 +12,7 @@ struct pegawai
     int idPegawai;
     int umur;
     string jabatan;
+    float nilai;
 };
 
 typedef pegawai infotypePegawai;
@@ -53,7 +54,7 @@ struct listDivisi
     adrDivisi first;
     adrDivisi last;
 };
-//subprogram dasar Divisi
+// subprogram dasar Divisi
 void createListDivisi(listDivisi &L);
 bool isEmptyDivisi(listDivisi L);
 adrDivisi createElmDivisi(infotypeDivisi x);
@@ -65,7 +66,8 @@ void deleteLastDivisi(listDivisi &L, adrDivisi &D);
 void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &D);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
 void printInfoDivisi(listDivisi L);
-//subprogram dasar Pegawai
+
+// subprogram dasar Pegawai
 bool isEmptyPegawai(adrPegawai first);
 adrPegawai createElmListPegawai(infotypePegawai x);
 void insertFirstPegawai(adrDivisi &D, adrPegawai p);
@@ -77,11 +79,18 @@ void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
 void deleteAllPegawai(adrDivisi D);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrDivisi D);
-//studi kasus
+
+// studi kasus
 float hitungRataUmurPegawai(listDivisi L);
 adrPegawai cariPegawaiTertua(listDivisi L);
 int hitungTotalPegawai(listDivisi L);
-//main program
+void sisipPegawaiJikaDivisiKosong(listDivisi &L);
+void hapusDivisiTanpaPegawai(listDivisi &L);
+void hapusPegawaiNilaiRendah(listDivisi &L, float batas);
+void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L);
+void pegawaiResign(listDivisi &L);
+
+// main program
 int mainAdmin(listDivisi &L);
 int mainUser(listDivisi &L);
 

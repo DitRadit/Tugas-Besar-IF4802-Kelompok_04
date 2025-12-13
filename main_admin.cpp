@@ -2,20 +2,27 @@
 
 int mainAdmin(listDivisi &L)
 {
-    int i, j;
+    int jumlahDivisi;
     infotypeDivisi d;
     adrDivisi p;
 
-    int jumlahDivisi;
-    cout << "Jumlah divisi: ";
+    cout << "=====================================\n";
+    cout << "        MENU ADMIN - DATA DIVISI      \n";
+    cout << "=====================================\n";
+    cout << "Masukkan jumlah divisi: ";
     cin >> jumlahDivisi;
+    cout << "=====================================\n";
 
-    for (i = 0; i < jumlahDivisi; i++)
+    for (int i = 0; i < jumlahDivisi; i++)
     {
-        cout << "\n=== Input Divisi ke-" << i + 1 << " ===\n";
+        cout << "\n-------------------------------------\n";
+        cout << " Input Data Divisi ke-" << i + 1 << endl;
+        cout << "-------------------------------------\n";
+
         d.idDivisi = i + 1;
         d.jumlahPegawai = 0;
 
+        cout << "ID Divisi     : " << d.idDivisi << endl;
         cout << "Nama Divisi   : ";
         cin >> d.nama;
         cout << "Lokasi Divisi : ";
@@ -24,22 +31,25 @@ int mainAdmin(listDivisi &L)
         p = createElmDivisi(d);
 
         int jumlahPegawai;
-        cout << "Jumlah Pegawai di divisi ini: ";
+        cout << "Jumlah Pegawai: ";
         cin >> jumlahPegawai;
 
-        for (j = 0; j < jumlahPegawai; j++)
+        cout << "\n=== Input Data Pegawai ===\n";
+
+        for (int j = 0; j < jumlahPegawai; j++)
         {
             infotypePegawai pgw;
             adrPegawai q;
 
-            cout << "\n  Pegawai ke-" << j + 1 << endl;
-            cout << "  ID Pegawai   : ";
+            cout << "\nPegawai ke-" << j + 1 << endl;
+            cout << "-------------------------\n";
+            cout << "ID Pegawai : ";
             cin >> pgw.idPegawai;
-            cout << "  Nama         : ";
+            cout << "Nama       : ";
             cin >> pgw.nama;
-            cout << "  Umur         : ";
+            cout << "Umur       : ";
             cin >> pgw.umur;
-            cout << "  Jabatan      : ";
+            cout << "Jabatan    : ";
             cin >> pgw.jabatan;
 
             q = createElmListPegawai(pgw);
@@ -47,7 +57,13 @@ int mainAdmin(listDivisi &L)
         }
 
         insertLastDivisi(L, p);
+
+        cout << "\nDivisi berhasil ditambahkan!\n";
     }
+
+    cout << "\n=====================================\n";
+    cout << " Semua data divisi berhasil diinput  \n";
+    cout << "=====================================\n";
 
     return 0;
 }

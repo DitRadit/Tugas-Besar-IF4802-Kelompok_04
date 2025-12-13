@@ -4,21 +4,32 @@ int main()
 {
     listDivisi L;
     createListDivisi(L);
-    bool isTrue;
-    isTrue = true;
+
+    bool isTrue = true;
     string input;
 
     while (isTrue)
     {
-        cout << "\nMasuk sebagai (ADMIN / USER / EXIT): ";
+        cout << "\n=====================================\n";
+        cout << "      SISTEM MANAJEMEN PERUSAHAAN     \n";
+        cout << "=====================================\n";
+        cout << "1. ADMIN\n";
+        cout << "2. USER\n";
+        cout << "3. EXIT\n";
+        cout << "=====================================\n";
+        cout << "Pilih menu (ADMIN / USER / EXIT): ";
         cin >> input;
+
+        cout << "-------------------------------------\n";
 
         if (input == "ADMIN")
         {
+            cout << "Masuk sebagai ADMIN...\n";
             mainAdmin(L);
         }
         else if (input == "USER")
         {
+            cout << "Masuk sebagai USER...\n";
             mainUser(L);
         }
         else if (input == "EXIT")
@@ -28,39 +39,9 @@ int main()
         }
         else
         {
-            cout << "Pilihan tidak valid.\n";
+            cout << "Pilihan tidak valid, silakan coba lagi.\n";
         }
     }
 
     return 0;
-
-    // adrDivisi D = new elmListDivisi;
-    // D->firstPegawai = nullptr;
-    // D->infoD.jumlahPegawai = 0;
-
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     pegawai x;
-    //     cout << "=== Input Pegawai " << i + 1 << " ===\n";
-    //     cout << "Nama: ";
-    //     cin >> x.nama;
-    //     cout << "ID: ";
-    //     cin >> x.idPegawai;
-    //     cout << "Umur: ";
-    //     cin >> x.umur;
-    //     cout << "Jabatan: ";
-    //     cin >> x.jabatan;
-
-    //     adrPegawai P = createElmListPegawai(x);
-
-    //     insertLastPegawai(D, P);
-
-    //     cout << endl;
-    // }
-
-    // cout << "\n=== Daftar Pegawai ===\n";
-    // printInfoPegawai(D);
-
-    // TAMPILAN NAMA KLP, ANGGOTA
-    // PILIHAN ADMIN ATAU USER
 }

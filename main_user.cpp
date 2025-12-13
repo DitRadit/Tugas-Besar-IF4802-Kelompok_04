@@ -2,46 +2,88 @@
 
 int mainUser(listDivisi &L)
 {
-    adrDivisi d;
-    int totalPegawai;
-    float rataUmurPegawai;
-    adrPegawai tertua;
+    int pilih;
 
-    cout << "\n===== MENU USER =====\n";
-
-    if (isEmptyDivisi(L))
+    do
     {
-        cout << "Data divisi masih kosong.\n";
-        return 0;
-    }
+        cout << "\n=====================================\n";
+        cout << "              MENU USER               \n";
+        cout << "=====================================\n";
+        cout << "1. Sisip pegawai jika divisi kosong\n";
+        cout << "2. Hapus divisi tanpa pegawai\n";
+        cout << "3. Pemecatan pegawai (nilai < 5.0)\n";
+        cout << "4. Buat divisi baru jika > 10 pegawai\n";
+        cout << "5. Pegawai resign\n";
+        cout << "6. Lihat data & statistik pegawai\n";
+        cout << "0. Kembali ke menu utama\n";
+        cout << "=====================================\n";
+        cout << "Pilih menu: ";
+        cin >> pilih;
 
-    d = L.first;
-    while (d != nullptr)
-    {
-        cout << "\nDivisi        : " << d->infoD.nama << endl;
-        cout << "Lokasi        : " << d->infoD.lokasiDivisi << endl;
-        cout << "Jumlah Pegawai: " << d->infoD.jumlahPegawai << endl;
+        switch (pilih)
+        {
+        case 1:
+            sisipPegawaiJikaDivisiKosong(L);
+            break;
 
-        printInfoPegawai(d);
+        case 2:
+            hapusDivisiTanpaPegawai(L);
+            break;
 
-        d = d->next;
-    }
+        case 3:
+            hapusPegawaiNilaiRendah(L, 5.0);
+            break;
 
-    cout << endl;
-    
-    totalPegawai = hitungTotalPegawai(L);
-    cout << "Total Karyawan : " << totalPegawai << " orang" << endl << endl;
+        case 4:
+            buatDivisiBaruJikaPegawaiLebih10(L);
+            break;
 
-    rataUmurPegawai = hitungRataUmurPegawai(L);
-    cout << "Rata Umur: " << rataUmurPegawai << endl << endl;
+        case 5:
+            pegawaiResign(L);
+            break;
 
-    tertua = cariPegawaiTertua(L);
-    if(tertua){
-        cout << "Pegawai tertua: " << tertua->infoP.nama << " (" << tertua->infoP.umur <<" tahun)" << endl;
-    }
-    
-    
+        case 6:
+        {
+            cout << "\n=====================================\n";
+            cout << "        DATA DIVISI & PEGAWAI         \n";
+            cout << "=====================================\n";
 
+            adrDivisi d = L.first;
+            while (d != nullptr)
+            {
+                cout << "\nDivisi        : " << d->infoD.nama << endl;
+                cout << "Lokasi        : " << d->infoD.lokasiDivisi << endl;
+                cout << "Jumlah Pegawai: " << d->infoD.jumlahPegawai << endl;
+                cout << "-------------------------------------\n";
+
+                printInfoPegawai(d);
+
+                d = d->next;
+            }
+
+            cout << "\n=====================================\n";
+            cout << "              STATISTIK               \n";
+            cout << "=====================================\n";
+
+            cout << "Total Pegawai     : "
+                 << hitungTotalPegawai(L) << " orang\n";
+
+            cout << "Rata-rata Umur    : "
+                 << hitungRataUmurPegawai(L) << " tahun\n";
+
+            adrPegawai t = cariPegawaiTertua(L);
+            if (t != nullptr)
+            {
+                cout << "Pegawai Tertua    : "
+                     << t->infoP.nama
+                     << " (" << t->infoP.umur << " tahun)\n";
+            }
+
+            cout << "=====================================\n";
+            break;
+        }
+        }
+    } while (pilih != 0);
 
     return 0;
 }
