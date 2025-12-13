@@ -4,9 +4,7 @@
 #include <iostream>
 using namespace std;
 
-// ===========================
 //  PEGAWAI (CHILD FIRST!)
-// ===========================
 
 struct pegawai
 {
@@ -27,9 +25,7 @@ struct elmListPegawai
     adrPegawai next;
 };
 
-// ===========================
 //  DIVISI (PARENT SECOND!)
-// ===========================
 
 struct divisi
 {
@@ -58,9 +54,6 @@ struct listDivisi
     adrDivisi last;
 };
 
-// ===========================
-//     PROTOTYPE DIVISI
-// ===========================
 void createListDivisi(listDivisi &L);
 bool isEmptyDivisi(listDivisi L);
 adrDivisi createElmDivisi(infotypeDivisi x);
@@ -73,9 +66,6 @@ void deleteAfterDivisi(listDivisi &L, adrDivisi prec, adrDivisi &D);
 adrDivisi findElmDivisi(listDivisi L, int idDivisi);
 void printInfoDivisi(listDivisi L);
 
-// ===========================
-//     PROTOTYPE PEGAWAI
-// ===========================
 bool isEmptyPegawai(adrPegawai first);
 adrPegawai createElmListPegawai(infotypePegawai x);
 void insertFirstPegawai(adrDivisi &D, adrPegawai p);
@@ -88,7 +78,7 @@ void deleteAllPegawai(adrDivisi D);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
 void printInfoPegawai(adrDivisi D);
 
-int mainAdmin();
-int mainUser();
+int mainAdmin(listDivisi &L);
+int mainUser(listDivisi &L);
 
 #endif

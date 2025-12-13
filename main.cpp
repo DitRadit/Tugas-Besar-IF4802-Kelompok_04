@@ -2,25 +2,39 @@
 
 int main()
 {
-
-
+    listDivisi L;
+    createListDivisi(L);
+    bool isTrue;
+    isTrue = true;
     string input;
-    cin >> input;
 
-    if (input == "ADMIN")
+    while (isTrue)
     {
-        mainAdmin();
-    }
-    else
-    {
-        mainUser();
+        cout << "\nMasuk sebagai (ADMIN / USER / EXIT): ";
+        cin >> input;
+
+        if (input == "ADMIN")
+        {
+            mainAdmin(L);
+        }
+        else if (input == "USER")
+        {
+            mainUser(L);
+        }
+        else if (input == "EXIT")
+        {
+            cout << "Program selesai.\n";
+            isTrue = false;
+        }
+        else
+        {
+            cout << "Pilihan tidak valid.\n";
+        }
     }
 
     return 0;
 
-
-
-        // adrDivisi D = new elmListDivisi;
+    // adrDivisi D = new elmListDivisi;
     // D->firstPegawai = nullptr;
     // D->infoD.jumlahPegawai = 0;
 
