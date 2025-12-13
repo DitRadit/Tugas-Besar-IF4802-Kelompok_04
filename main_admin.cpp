@@ -49,6 +49,5 @@ int mainAdmin(listDivisi &L)
         insertLastDivisi(L, p);
     }
 
-    printInfoDivisi(L);
     return 0;
 }
