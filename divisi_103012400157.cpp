@@ -168,6 +168,7 @@ void hapusPegawaiNilaiRendah(listDivisi &L, float batas)
     while (d != nullptr)
     {
         adrPegawai p = d->firstPegawai;
+        adrPegawai prev = nullptr;
 
         while (p != nullptr)
         {
@@ -181,17 +182,26 @@ void hapusPegawaiNilaiRendah(listDivisi &L, float batas)
                      << d->infoD.nama << endl;
 
                 if (p == d->firstPegawai)
+                {
                     deleteFirstPegawai(d, p);
+                }
                 else if (p->next == nullptr)
+                {
                     deleteLastPegawai(d, p);
+                }
                 else
-                    deleteAfterPegawai(d, p, p);
-
-                d->infoD.jumlahPegawai--;
+                {
+                    deleteAfterPegawai(d, prev, p);
+                }
+            }
+            else
+            {
+                prev = p;
             }
 
             p = next;
         }
+
         d = d->next;
     }
 
@@ -201,76 +211,90 @@ void hapusPegawaiNilaiRendah(listDivisi &L, float batas)
 
 void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L)
 {
-    adrDivisi d = L.first;
+    int key;
+    cout << "Masukkan id divisi: ";
+    cin >> key;
 
-    while (d != nullptr)
-    {
-        if (d->infoD.jumlahPegawai > 10)
-        {
-            infotypeDivisi x;
-            adrDivisi baru;
+    adrDivisi D = findElmDivisi(L, key);
 
-            cout << "\nDivisi " << d->infoD.nama
-                 << " memiliki lebih dari 10 pegawai.\n";
-            cout << "Membuat divisi baru.\n";
-
-            cout << "Nama Divisi   : ";
-            cin >> x.nama;
-            cout << "Lokasi Divisi : ";
-            cin >> x.lokasiDivisi;
-
-            x.idDivisi = d->infoD.idDivisi + 100;
-            x.jumlahPegawai = 0;
-
-            baru = createElmDivisi(x);
-            insertLastDivisi(L, baru);
-
-            cout << "Divisi baru berhasil dibuat.\n";
-        }
-        d = d->next;
-    }
-}
-
-void pegawaiResign(listDivisi &L)
-{
-    int idDivisi, idPegawai;
-    cout << "ID Divisi  : ";
-    cin >> idDivisi;
-    cout << "ID Pegawai : ";
-    cin >> idPegawai;
-
-    adrDivisi d = findElmDivisi(L, idDivisi);
-
-    if (d == nullptr)
+    if (D == nullptr)
     {
         cout << "Divisi tidak ditemukan.\n";
         return;
     }
 
-    adrPegawai p = d->firstPegawai;
-
-    while (p != nullptr)
+    if (D->infoD.jumlahPegawai < 10)
     {
-        if (p->infoP.idPegawai == idPegawai)
-        {
-            cout << "Pegawai "
-                 << p->infoP.nama
-                 << " resign dari divisi "
-                 << d->infoD.nama << endl;
-
-            if (p == d->firstPegawai)
-                deleteFirstPegawai(d, p);
-            else if (p->next == nullptr)
-                deleteLastPegawai(d, p);
-            else
-                deleteAfterPegawai(d, p, p);
-
-            d->infoD.jumlahPegawai--;
-            cout << "Resign berhasil.\n";
-            return;
-        }
-        p = p->next;
+        cout << "Divisi belum memiliki 10 pegawai.\n";
+        return;
     }
 
-    cout << "Pegawai tidak ditemukan.\n";
+    infotypeDivisi dBaru;
+    cout << "Divisi memiliki >= 10 pegawai.\n";
+    cout << "Membuat divisi baru...\n";
+    cout << "Nama divisi baru   : ";
+    cin >> dBaru.nama;
+    cout << "Lokasi divisi baru : ";
+    cin >> dBaru.lokasiDivisi;
+
+    dBaru.idDivisi = D->infoD.idDivisi + 100;
+    dBaru.jumlahPegawai = 0;
+
+    adrDivisi divBaru = createElmDivisi(dBaru);
+    insertLastDivisi(L, divBaru);
+
+    infotypePegawai p;
+    cout << "\nInput pegawai pertama divisi baru\n";
+    cout << "ID Pegawai : ";
+    cin >> p.idPegawai;
+    cout << "Nama       : ";
+    cin >> p.nama;
+    cout << "Umur       : ";
+    cin >> p.umur;
+    cout << "Jabatan    : ";
+    cin >> p.jabatan;
+    cout << "Nilai      : ";
+    cin >> p.nilai;
+
+    adrPegawai P = createElmListPegawai(p);
+    insertFirstPegawai(divBaru, P);
+
+    cout << "Divisi baru dan pegawai pertama berhasil dibuat.\n";
+}
+
+
+void insertDivisiDanPegawai(listDivisi &L)
+{
+    int nDivisi;
+    int jumlah;
+    cin >> nDivisi;
+
+    for (int i = 1; i <= nDivisi; i++)
+    {
+        infotypeDivisi d;
+        cin >> d.nama;
+        cin >> d.lokasiDivisi;
+        
+
+        d.idDivisi = i;
+        d.jumlahPegawai = 0;
+
+        adrDivisi D = createElmDivisi(d);
+        insertLastDivisi(L, D);
+        cout << "Inputkan jumlah pegawai yang ingin diinput: ";
+          cin >> jumlah;
+
+        for (int j = 1; j <= jumlah; j++)
+        {
+            infotypePegawai p;
+            cin >> p.idPegawai;
+            cin >> p.nama;
+            cin >> p.umur;
+            cin >> p.jabatan;
+            cin >> p.nilai;   
+
+            adrPegawai P = createElmListPegawai(p);
+            insertLastPegawai(D, P);
+        }
+    }
 }

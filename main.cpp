@@ -11,7 +11,7 @@ int main()
     while (isTrue)
     {
         cout << "\n=====================================\n";
-        cout << "      SISTEM MANAJEMEN PERUSAHAAN     \n";
+        cout << "     SISTEM MANAJEMEN PERUSAHAAN      \n";
         cout << "=====================================\n";
         cout << "1. ADMIN\n";
         cout << "2. USER\n";

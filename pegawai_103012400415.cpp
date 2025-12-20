@@ -66,9 +66,7 @@ adrPegawai findElmPegawai(adrDivisi D, int idPegawai)
 
 void printInfoPegawai(adrDivisi D)
 {
-    adrPegawai p;
-
-    p = D->firstPegawai;
+    adrPegawai p = D->firstPegawai;
 
     if (p == nullptr)
     {
@@ -76,18 +74,24 @@ void printInfoPegawai(adrDivisi D)
     }
     else
     {
-        cout << "Daftar Pegawai: " << endl;
+        cout << "Daftar Pegawai:" << endl;
+
         while (p != nullptr)
         {
-            cout << "    - " << p->infoP.nama
+            cout << "    - "
+                 << p->infoP.nama
                  << " (ID: " << p->infoP.idPegawai
                  << ", Umur: " << p->infoP.umur
-                 << ", Jabatan: " << p->infoP.jabatan << ")"
+                 << ", Jabatan: " << p->infoP.jabatan
+                 << ", Nilai: " << p->infoP.nilai
+                 << ")"
                  << endl;
+
             p = p->next;
         }
     }
 }
+
 
 float hitungRataUmurPegawai(listDivisi L) {
     float rata = 0.0;
@@ -156,4 +160,34 @@ int hitungTotalPegawai(listDivisi L) {
     }
 
     return total;
+}
+
+void findPegawai(listDivisi L){
+    int idDiv, idPeg;
+    cout << "Masukkan ID Divisi  : ";
+    cin >> idDiv;
+
+    adrDivisi D = findElmDivisi(L, idDiv);
+    if (D == NULL)
+    {
+        cout << "Divisi tidak ditemukan\n";
+    }
+    else
+    {
+        cout << "Masukkan ID Pegawai: ";
+        cin >> idPeg;
+
+        adrPegawai P = findElmPegawai(D, idPeg);
+        if (P != NULL)
+        {
+            cout << "ID   : " << P->infoP.idPegawai << endl;
+            cout << "Nama : " << P->infoP.nama << endl;
+            cout << "Umur : " << P->infoP.umur << endl;
+            cout << "Nilai : " << P->infoP.nilai << endl;
+        }
+        else
+        {
+            cout << "Pegawai tidak ditemukan\n";
+        }
+    }
 }

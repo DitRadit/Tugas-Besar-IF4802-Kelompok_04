@@ -78,6 +78,7 @@ void deleteLastPegawai(adrDivisi &D, adrPegawai &p);
 void deleteAfterPegawai(adrDivisi &D, adrPegawai &prec, adrPegawai &p);
 void deleteAllPegawai(adrDivisi D);
 adrPegawai findElmPegawai(adrDivisi D, int idPegawai);
+void findPegawai(listDivisi L);
 void printInfoPegawai(adrDivisi D);
 
 // studi kasus
@@ -88,7 +89,9 @@ void sisipPegawaiJikaDivisiKosong(listDivisi &L);
 void hapusDivisiTanpaPegawai(listDivisi &L);
 void hapusPegawaiNilaiRendah(listDivisi &L, float batas);
 void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L);
-void pegawaiResign(listDivisi &L);
+void insertDivisiDanPegawai(listDivisi &L);
+
+
 
 // main program
 int mainAdmin(listDivisi &L);
