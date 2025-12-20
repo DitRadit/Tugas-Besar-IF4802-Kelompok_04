@@ -312,11 +312,87 @@ int mainAdmin(listDivisi &L)
                         cout << "=====================================\n";
                         cout << "Pilih menu: ";
 
-                        int p;
-                        cin >> p;
+                        int pilihP;
+                        cin >> pilihP;
 
-                        if (p == 4)
+                        adrPegawai p;
+
+                        if (pilihP == 1)
+                        {
+                            int idDivisi;
+                            cout << "ID Divisi: ";
+                            cin >> idDivisi;
+
+                            adrDivisi D = findElmDivisi(L, idDivisi);
+                            if (D != NULL)
+                            {
+                                deleteFirstPegawai(D, p);
+                                if (p != NULL)
+                                    cout << "Pegawai pertama berhasil dihapus.\n";
+                                else
+                                    cout << "Data pegawai kosong.\n";
+                            }
+                            else
+                            {
+                                cout << "Divisi tidak ditemukan.\n";
+                            }
+                        }
+                        else if (pilihP == 2)
+                        {
+                            int idDivisi;
+                            cout << "ID Divisi: ";
+                            cin >> idDivisi;
+
+                            adrDivisi D = findElmDivisi(L, idDivisi);
+                            if (D != NULL)
+                            {
+                                deleteLastPegawai(D, p);
+                                if (p != NULL)
+                                    cout << "Pegawai terakhir berhasil dihapus.\n";
+                                else
+                                    cout << "Data pegawai kosong.\n";
+                            }
+                            else
+                            {
+                                cout << "Divisi tidak ditemukan.\n";
+                            }
+                        }
+                        else if (pilihP == 3)
+                        {
+                            int idDivisi;
+                            cout << "ID Divisi: ";
+                            cin >> idDivisi;
+
+                            adrDivisi D = findElmDivisi(L, idDivisi);
+                            if (D != NULL)
+                            {
+                                int cariID;
+                                cout << "ID Pegawai yang dicari: ";
+                                cin >> cariID;
+
+                                adrPegawai prec = findElmPegawai(D, cariID);
+                                if (prec != NULL)
+                                {
+                                    deleteAfterPegawai(D, prec, p);
+                                    if (p != NULL)
+                                        cout << "Pegawai setelah ID " << cariID << " berhasil dihapus.\n";
+                                    else
+                                        cout << "Tidak ada pegawai setelah ID tersebut.\n";
+                                }
+                                else
+                                {
+                                    cout << "Pegawai yang dicari tidak ditemukan.\n";
+                                }
+                            }
+                            else
+                            {
+                                cout << "Divisi tidak ditemukan.\n";
+                            }
+                        }
+                        else
+                        {
                             backPegawai = true;
+                        }
                     }
                 }
                 else
