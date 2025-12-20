@@ -69,6 +69,7 @@ void printInfoDivisi(listDivisi L);
 
 // subprogram dasar Pegawai
 bool isEmptyPegawai(adrPegawai first);
+bool isPegawaiSudahAda(listDivisi L, string namaPegawai);
 adrPegawai createElmListPegawai(infotypePegawai x);
 void insertFirstPegawai(adrDivisi &D, adrPegawai p);
 void insertLastPegawai(adrDivisi &D, adrPegawai p);
@@ -90,8 +91,8 @@ void hapusDivisiTanpaPegawai(listDivisi &L);
 void hapusPegawaiNilaiRendah(listDivisi &L, float batas);
 void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L);
 void insertDivisiDanPegawai(listDivisi &L);
-
-
+void listDivisiPegawaiLebih10(listDivisi L);
+void listPegawaiNilaiRendah(listDivisi L, float batas);
 
 // main program
 int mainAdmin(listDivisi &L);

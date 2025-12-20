@@ -15,6 +15,8 @@ int mainUser(listDivisi &L)
         cout << "4. Buat divisi baru jika > 10 pegawai\n";
         cout << "5. Jika Divisi kosong, sisipkan pegawai\n";
         cout << "6. Lihat data & statistik pegawai\n";
+        cout << "7. List Divisi yang memiliki pegawai >= 10\n";
+        cout << "8. List Pegawai yang memiliki kinerja dibawah < 5.1\n";
         cout << "7. Back\n";
         cout << "=====================================\n";
         cout << "Pilih menu: ";
@@ -101,6 +103,11 @@ int mainUser(listDivisi &L)
         }
 
         case 7:
+            listDivisiPegawaiLebih10(L);
+            break;
+        case 8:
+            listPegawaiNilaiRendah(L, 5.1);
+        case 9:
             cout << "Kembali ke menu utama...\n";
             return 0;
 
@@ -108,6 +115,6 @@ int mainUser(listDivisi &L)
             cout << "Pilihan menu tidak valid.\n";
         }
 
-    } while (true);   
+    } while (true);
     return 0;
 }

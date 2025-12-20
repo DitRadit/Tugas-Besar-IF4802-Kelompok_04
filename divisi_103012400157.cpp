@@ -103,40 +103,6 @@ void printInfoDivisi(listDivisi L)
     }
 }
 
-void sisipPegawaiJikaDivisiKosong(listDivisi &L)
-{
-    adrDivisi d = L.first;
-
-    while (d != nullptr)
-    {
-        if (d->infoD.jumlahPegawai == 0)
-        {
-            infotypePegawai p;
-            adrPegawai q;
-
-            cout << "\nDivisi " << d->infoD.nama << " tidak memiliki pegawai.\n";
-            cout << "Masukkan data pegawai baru:\n";
-            cout << "ID Pegawai : ";
-            cin >> p.idPegawai;
-            cout << "Nama       : ";
-            cin >> p.nama;
-            cout << "Umur       : ";
-            cin >> p.umur;
-            cout << "Jabatan    : ";
-            cin >> p.jabatan;
-            cout << "Nilai      : ";
-            cin >> p.nilai;
-
-            q = createElmListPegawai(p);
-            insertLastPegawai(d, q);
-            d->infoD.jumlahPegawai++;
-
-            cout << "Pegawai berhasil ditambahkan.\n";
-        }
-        d = d->next;
-    }
-}
-
 void hapusDivisiTanpaPegawai(listDivisi &L)
 {
     adrDivisi d = L.first;
@@ -159,54 +125,6 @@ void hapusDivisiTanpaPegawai(listDivisi &L)
 
         d = next;
     }
-}
-
-void hapusPegawaiNilaiRendah(listDivisi &L, float batas)
-{
-    adrDivisi d = L.first;
-
-    while (d != nullptr)
-    {
-        adrPegawai p = d->firstPegawai;
-        adrPegawai prev = nullptr;
-
-        while (p != nullptr)
-        {
-            adrPegawai next = p->next;
-
-            if (p->infoP.nilai < batas)
-            {
-                cout << "Memecat pegawai "
-                     << p->infoP.nama
-                     << " dari divisi "
-                     << d->infoD.nama << endl;
-
-                if (p == d->firstPegawai)
-                {
-                    deleteFirstPegawai(d, p);
-                }
-                else if (p->next == nullptr)
-                {
-                    deleteLastPegawai(d, p);
-                }
-                else
-                {
-                    deleteAfterPegawai(d, prev, p);
-                }
-            }
-            else
-            {
-                prev = p;
-            }
-
-            p = next;
-        }
-
-        d = d->next;
-    }
-
-    cout << "Pemecatan pegawai dengan nilai < "
-         << batas << " selesai.\n";
 }
 
 void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L)
@@ -262,7 +180,6 @@ void buatDivisiBaruJikaPegawaiLebih10(listDivisi &L)
     cout << "Divisi baru dan pegawai pertama berhasil dibuat.\n";
 }
 
-
 void insertDivisiDanPegawai(listDivisi &L)
 {
     int nDivisi;
@@ -274,15 +191,15 @@ void insertDivisiDanPegawai(listDivisi &L)
         infotypeDivisi d;
         cin >> d.nama;
         cin >> d.lokasiDivisi;
-        
 
         d.idDivisi = i;
         d.jumlahPegawai = 0;
 
         adrDivisi D = createElmDivisi(d);
         insertLastDivisi(L, D);
+
         cout << "Inputkan jumlah pegawai yang ingin diinput: ";
-          cin >> jumlah;
+        cin >> jumlah;
 
         for (int j = 1; j <= jumlah; j++)
         {
@@ -291,10 +208,45 @@ void insertDivisiDanPegawai(listDivisi &L)
             cin >> p.nama;
             cin >> p.umur;
             cin >> p.jabatan;
-            cin >> p.nilai;   
+            cin >> p.nilai;
 
-            adrPegawai P = createElmListPegawai(p);
-            insertLastPegawai(D, P);
+            if (isPegawaiSudahAda(L, p.nama))
+            {
+                cout << "Pegawai " << p.nama
+                     << " sudah terdaftar di divisi lain\n";
+            }
+            else
+            {
+                adrPegawai P = createElmListPegawai(p);
+                insertLastPegawai(D, P);
+            }
         }
+    }
+}
+
+void listDivisiPegawaiLebih10(listDivisi L)
+{
+    adrDivisi d = L.first;
+    bool found = false;
+
+    cout << "Daftar divisi dengan jumlah pegawai >= 10:\n";
+
+    while (d != nullptr)
+    {
+        if (d->infoD.jumlahPegawai >= 10)
+        {
+            cout << "ID Divisi : " << d->infoD.idDivisi << endl;
+            cout << "Nama      : " << d->infoD.nama << endl;
+            cout << "Lokasi    : " << d->infoD.lokasiDivisi << endl;
+            cout << "Jumlah    : " << d->infoD.jumlahPegawai << endl;
+            cout << "-----------------------------\n";
+            found = true;
+        }
+        d = d->next;
+    }
+
+    if (!found)
+    {
+        cout << "Tidak ada divisi dengan pegawai >= 10.\n";
     }
 }
