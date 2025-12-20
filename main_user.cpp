@@ -9,7 +9,7 @@ int mainUser(listDivisi &L)
         cout << "\n=====================================\n";
         cout << "              MENU USER               \n";
         cout << "=====================================\n";
-        cout << "1. Sediakan data jika List Pegawai kosong\n";
+        cout << "1. Sediakan data jika List Divisi dan Pegawai kosong\n";
         cout << "2. Hapus divisi tanpa pegawai\n";
         cout << "3. Pemecatan pegawai (nilai < 5.1)\n";
         cout << "4. Buat divisi baru jika > 10 pegawai\n";
@@ -17,7 +17,7 @@ int mainUser(listDivisi &L)
         cout << "6. Lihat data & statistik pegawai\n";
         cout << "7. List Divisi yang memiliki pegawai >= 10\n";
         cout << "8. List Pegawai yang memiliki kinerja dibawah < 5.1\n";
-        cout << "7. Back\n";
+        cout << "9. Back\n";
         cout << "=====================================\n";
         cout << "Pilih menu: ";
         cin >> pilih;

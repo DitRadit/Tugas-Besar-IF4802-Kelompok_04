@@ -40,7 +40,7 @@ int mainAdmin(listDivisi &L)
 
                 int sub;
                 cin >> sub;
-                if (sub == 1) 
+                if (sub == 1)
                 {
                     cout << "\n=====================================\n";
                     cout << "        MENU INSERT - DIVISI          \n";
@@ -53,20 +53,21 @@ int mainAdmin(listDivisi &L)
                     cout << "Pilih menu: ";
 
                     infotypeDivisi x;
-                    adrDivisi d,key;
+                    adrDivisi d, key;
                     int sub, cariID;
                     cin >> sub;
 
                     if (sub == 1)
-                    { 
+                    {
                         cout << "ID Divisi     : ";
                         cin >> x.idDivisi;
                         cout << "Nama Divisi   : ";
                         cin >> x.nama;
                         cout << "Lokasi Divisi : ";
                         cin >> x.lokasiDivisi;
+                        x.jumlahPegawai = 0;
                         d = createElmDivisi(x);
-                        insertFirstDivisi(L,d);
+                        insertFirstDivisi(L, d);
                     }
                     else if (sub == 2)
                     {
@@ -76,8 +77,9 @@ int mainAdmin(listDivisi &L)
                         cin >> x.nama;
                         cout << "Lokasi Divisi : ";
                         cin >> x.lokasiDivisi;
+                        x.jumlahPegawai = 0;
                         d = createElmDivisi(x);
-                        insertLastDivisi(L,d);
+                        insertLastDivisi(L, d);
                     }
                     else if (sub == 3)
                     {
@@ -85,19 +87,20 @@ int mainAdmin(listDivisi &L)
                         cin >> cariID;
                         key = findElmDivisi(L, cariID);
 
-                        if(key != nullptr)
+                        if (key != nullptr)
                         {
-                        cout << "ID Divisi     : ";
-                        cin >> x.idDivisi;
-                        cout << "Nama Divisi   : ";
-                        cin >> x.nama;
-                        cout << "Lokasi Divisi : ";
-                        cin >> x.lokasiDivisi;
+                            cout << "ID Divisi     : ";
+                            cin >> x.idDivisi;
+                            cout << "Nama Divisi   : ";
+                            cin >> x.nama;
+                            cout << "Lokasi Divisi : ";
+                            cin >> x.lokasiDivisi;
+                            x.jumlahPegawai = 0;
 
-                        d = createElmDivisi(x);
-                        insertAfterDivisi(L,key,d);
-                        } 
-                        else 
+                            d = createElmDivisi(x);
+                            insertAfterDivisi(L, key, d);
+                        }
+                        else
                         {
                             cout << "Divisi yang dicari tidak ditemukan\n";
                         }
@@ -107,96 +110,118 @@ int mainAdmin(listDivisi &L)
                         backInsertD = true;
                     }
                 }
-if (sub == 2)
-{
-    int idDivisi, subInsert, cariID;
-    adrDivisi D;
-    adrPegawai q, key;
-    infotypePegawai p;
+                if (sub == 2)
+                {
+                    int idDivisi, subInsert, cariID;
+                    adrDivisi D;
+                    adrPegawai q, key;
+                    infotypePegawai p;
 
-    cout << "ID Divisi: ";
-    cin >> idDivisi;
+                    cout << "ID Divisi: ";
+                    cin >> idDivisi;
 
+                    D = findElmDivisi(L, idDivisi);
+                    if (D == NULL)
+                    {
+                        cout << "Divisi tidak ditemukan.\n";
+                        return 0;
+                    }
 
-    D = findElmDivisi(L, idDivisi);
-    if (D == NULL)
-    {
-        cout << "Divisi tidak ditemukan.\n";
-        return 0;
-    }
+                    cout << "\n=====================================\n";
+                    cout << "         MENU INSERT - PEGAWAI        \n";
+                    cout << "=====================================\n";
+                    cout << "1. First\n";
+                    cout << "2. Last\n";
+                    cout << "3. After\n";
+                    cout << "4. Back\n";
+                    cout << "=====================================\n";
+                    cout << "Pilih menu: ";
+                    cin >> subInsert;
 
-    cout << "\n=====================================\n";
-    cout << "         MENU INSERT - PEGAWAI        \n";
-    cout << "=====================================\n";
-    cout << "1. First\n";
-    cout << "2. Last\n";
-    cout << "3. After\n";
-    cout << "4. Back\n";
-    cout << "=====================================\n";
-    cout << "Pilih menu: ";
-    cin >> subInsert;
+                    if (subInsert == 1)
+                    {
+                        cout << "ID Pegawai : ";
+                        cin >> p.idPegawai;
+                        cout << "Nama       : ";
+                        cin >> p.nama;
+                        cout << "Umur       : ";
+                        cin >> p.umur;
+                        cout << "Jabatan    : ";
+                        cin >> p.jabatan;
+                        cout << "Nilai      : ";
+                        cin >> p.nilai;
 
-    if (subInsert == 1)
-    {
-        cout << "ID Pegawai : ";
-        cin >> p.idPegawai;
-        cout << "Nama       : ";
-        cin >> p.nama;
-        cout << "Umur       : ";
-        cin >> p.umur;
-        cout << "Jabatan    : ";
-        cin >> p.jabatan;
-        cout << "Nilai      : ";
-        cin >> p.nilai;
+                        if (isPegawaiSudahAda(L, p.nama))
+                        {
+                            cout << "Pegawai sudah terdaftar di divisi lain\n";
+                        }
+                        else
+                        {
+                            q = createElmListPegawai(p);
+                            insertFirstPegawai(D, q);
+                        }
+                    }
+                    else if (subInsert == 2)
+                    {
+                        cout << "ID Pegawai : ";
+                        cin >> p.idPegawai;
+                        cout << "Nama       : ";
+                        cin >> p.nama;
+                        cout << "Umur       : ";
+                        cin >> p.umur;
+                        cout << "Jabatan    : ";
+                        cin >> p.jabatan;
+                        cout << "Nilai      : ";
+                        cin >> p.nilai;
 
-        q = createElmListPegawai(p);
-        insertFirstPegawai(D, q);
-    }
-    else if (subInsert == 2)
-    {
-        cout << "ID Pegawai : ";
-        cin >> p.idPegawai;
-        cout << "Nama       : ";
-        cin >> p.nama;
-        cout << "Umur       : ";
-        cin >> p.umur;
-        cout << "Jabatan    : ";
-        cin >> p.jabatan;
-        cout << "Nilai      : ";
-        cin >> p.nilai;
+                        if (isPegawaiSudahAda(L, p.nama))
+                        {
+                            cout << "Pegawai sudah terdaftar di divisi lain\n";
+                        }
+                        else
+                        {
+                            q = createElmListPegawai(p);
+                            insertLastPegawai(D, q);
+                        }
+                    }
+                    else if (subInsert == 3)
+                    {
+                        cout << "ID Pegawai yang dicari: ";
+                        cin >> cariID;
 
-        q = createElmListPegawai(p);
-        insertLastPegawai(D, q);
-    }
-    else if (subInsert == 3)
-    {
-        cout << "ID Pegawai yang dicari: ";
-        cin >> cariID;
+                        key = findElmPegawai(D, cariID);
+                        if (key == NULL)
+                        {
+                            cout << "Pegawai yang dicari tidak ditemukan.\n";
+                            return 0;
+                        }
 
-        key = findElmPegawai(D, cariID);
-        if (key == NULL)
-        {
-            cout << "Pegawai yang dicari tidak ditemukan.\n";
-            return 0;
-        }
+                        cout << "ID Pegawai : ";
+                        cin >> p.idPegawai;
+                        cout << "Nama       : ";
+                        cin >> p.nama;
+                        cout << "Umur       : ";
+                        cin >> p.umur;
+                        cout << "Jabatan    : ";
+                        cin >> p.jabatan;
+                        cout << "Nilai      : ";
+                        cin >> p.nilai;
 
-        cout << "ID Pegawai : ";
-        cin >> p.idPegawai;
-        cout << "Nama       : ";
-        cin >> p.nama;
-        cout << "Umur       : ";
-        cin >> p.umur;
-        cout << "Jabatan    : ";
-        cin >> p.jabatan;
-        cout << "Nilai      : ";
-        cin >> p.nilai;
-
-        q = createElmListPegawai(p);
-        insertAfterPegawai(D, key, q);
-    }
-} else if (sub == 3){
-    insertDivisiDanPegawai(L);
-}
+                        if (isPegawaiSudahAda(L, p.nama))
+                        {
+                            cout << "Pegawai sudah terdaftar di divisi lain\n";
+                        }
+                        else
+                        {
+                            q = createElmListPegawai(p);
+                            insertAfterPegawai(D, key, q);
+                        }
+                    }
+                }
+                else if (sub == 3)
+                {
+                    insertDivisiDanPegawai(L);
+                }
 
                 else
                 {
@@ -237,7 +262,7 @@ if (sub == 2)
                         cout << "=====================================\n";
                         cout << "Pilih menu: ";
 
-                         int pilihD;
+                        int pilihD;
                         cin >> pilihD;
 
                         adrDivisi p;
@@ -302,24 +327,23 @@ if (sub == 2)
         }
         else if (pilih == 3)
         {
-      int p;
-cout << "Inputkan ID Divisi: ";
-cin >> p;
+            int p;
+            cout << "Inputkan ID Divisi: ";
+            cin >> p;
 
-adrDivisi D = findElmDivisi(L, p);
+            adrDivisi D = findElmDivisi(L, p);
 
-if (D == NULL)
-{
-    cout << "Divisi tidak ditemukan.\n";
-}
-else
-{
-    cout << "ID Divisi       : " << D->infoD.idDivisi << endl;
-    cout << "Jumlah Pegawai  : " << D->infoD.jumlahPegawai << endl;
-    cout << "Lokasi Divisi   : " << D->infoD.lokasiDivisi << endl;
-    cout << "Nama Divisi     : " << D->infoD.nama << endl;
-}
-
+            if (D == NULL)
+            {
+                cout << "Divisi tidak ditemukan.\n";
+            }
+            else
+            {
+                cout << "ID Divisi       : " << D->infoD.idDivisi << endl;
+                cout << "Jumlah Pegawai  : " << D->infoD.jumlahPegawai << endl;
+                cout << "Lokasi Divisi   : " << D->infoD.lokasiDivisi << endl;
+                cout << "Nama Divisi     : " << D->infoD.nama << endl;
+            }
         }
         else if (pilih == 4)
         {
@@ -328,29 +352,30 @@ else
         else if (pilih == 5)
         {
             printInfoDivisi(L);
-        } else if(pilih == 6){
-int p;
-cout << "Inputkan ID Divisi: ";
-cin >> p;
+        }
+        else if (pilih == 6)
+        {
+            int p;
+            cout << "Inputkan ID Divisi: ";
+            cin >> p;
 
-adrDivisi D = findElmDivisi(L, p);
+            adrDivisi D = findElmDivisi(L, p);
 
-if (D == NULL)
-{
-    cout << "Divisi tidak ditemukan.\n";
-}
-else
-{
-    cout << "\n=== INFORMASI DIVISI ===\n";
-    cout << "ID Divisi       : " << D->infoD.idDivisi << endl;
-    cout << "Nama Divisi     : " << D->infoD.nama << endl;
-    cout << "Jumlah Pegawai  : " << D->infoD.jumlahPegawai << endl;
-    cout << "Lokasi Divisi   : " << D->infoD.lokasiDivisi << endl;
+            if (D == NULL)
+            {
+                cout << "Divisi tidak ditemukan.\n";
+            }
+            else
+            {
+                cout << "\n=== INFORMASI DIVISI ===\n";
+                cout << "ID Divisi       : " << D->infoD.idDivisi << endl;
+                cout << "Nama Divisi     : " << D->infoD.nama << endl;
+                cout << "Jumlah Pegawai  : " << D->infoD.jumlahPegawai << endl;
+                cout << "Lokasi Divisi   : " << D->infoD.lokasiDivisi << endl;
 
-    cout << "\n=== INFORMASI PEGAWAI ===\n";
-    printInfoPegawai(D);
-}
-
+                cout << "\n=== INFORMASI PEGAWAI ===\n";
+                printInfoPegawai(D);
+            }
         }
         else if (pilih == 7)
         {
