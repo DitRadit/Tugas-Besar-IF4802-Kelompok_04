@@ -107,6 +107,7 @@ int mainUser(listDivisi &L)
             break;
         case 8:
             listPegawaiNilaiRendah(L, 5.1);
+            break;
         case 9:
             cout << "Kembali ke menu utama...\n";
             return 0;
