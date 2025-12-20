@@ -2,9 +2,9 @@
 
 int mainUser(listDivisi &L)
 {
-    int pilih;
+    int pilih = 0;
 
-    do
+    while (true)
     {
         cout << "\n=====================================\n";
         cout << "              MENU USER               \n";
@@ -105,9 +105,11 @@ int mainUser(listDivisi &L)
         case 7:
             listDivisiPegawaiLebih10(L);
             break;
+
         case 8:
             listPegawaiNilaiRendah(L, 5.1);
             break;
+
         case 9:
             cout << "Kembali ke menu utama...\n";
             return 0;
@@ -115,7 +117,7 @@ int mainUser(listDivisi &L)
         default:
             cout << "Pilihan menu tidak valid.\n";
         }
+    }
 
-    } while (true);
     return 0;
 }
